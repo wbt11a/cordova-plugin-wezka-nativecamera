@@ -1,3 +1,5 @@
+Fork Note:  This is a shameful rip of the below mentioned repository.  Minor modifications have been made but the credit belongs to github member "shaithana".  Original:  shaithana/cordova-plugin-wezka-nativecamera
+
 com.wezka.nativecamera
 ==========================
 
