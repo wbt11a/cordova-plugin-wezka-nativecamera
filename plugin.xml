@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-           id="com.wezka.nativecamera"
-      version="0.1.0">
-    <name>Wezka Native Camera</name>
+           id="org.wbt11a.nativecamera"
+        version="0.1.0">
+    <name>Native Camera</name>
 
     <js-module src="www/CameraConstants.js" name="Camera">
         <clobbers target="Camera" />
@@ -21,7 +21,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Camera">
-                <param name="android-package" value="com.wezka.nativecamera.NativeCameraLauncher"/>
+                <param name="android-package" value="org.wbt11a.nativecamera.NativeCameraLauncher"/>
             </feature>
         </config-file>
 
@@ -34,7 +34,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity 
                 android:label="nativecameraplugin" 
-                android:name="com.wezka.nativecamera.CameraActivity" 
+                android:name="org.wbt11a.nativecamera.CameraActivity" 
                 android:screenOrientation="portrait" 
                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             </activity>

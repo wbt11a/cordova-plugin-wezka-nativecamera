@@ -14,7 +14,7 @@
    		limitations under the License.   			
  */
 
-package com.wezka.nativecamera;
+package org.wbt11a.nativecamera;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
