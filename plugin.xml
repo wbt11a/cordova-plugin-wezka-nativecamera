@@ -56,5 +56,46 @@
         </js-module>
       
      </platform>
+
+      <!-- ios -->
+     <platform name="ios">
+         <config-file target="config.xml" parent="/*">
+             <feature name="Camera">
+                 <param name="ios-package" value="CDVCamera" />
+             </feature>
+         </config-file>
+
+         <js-module src="www/ios/CameraPopoverHandle.js" name="CameraPopoverHandle">
+            <clobbers target="CameraPopoverHandle" />
+         </js-module>
+
+         <header-file src="src/ios/CDVCamera.h" />
+         <source-file src="src/ios/CDVCamera.m" />
+         <header-file src="src/ios/CDVJpegHeaderWriter.h" />
+         <source-file src="src/ios/CDVJpegHeaderWriter.m" />
+         <header-file src="src/ios/CDVExif.h" />
+         <framework src="ImageIO.framework" weak="true" />
+         <framework src="CoreLocation.framework" />
+         <framework src="CoreGraphics.framework" />
+         <framework src="AssetsLibrary.framework" />
+         <framework src="MobileCoreServices.framework" />
+     </platform>
+
+     <!-- windows8 -->
+    <platform name="windows8">
+
+        <dependency id="org.apache.cordova.file" />
+        <config-file target="package.appxmanifest" parent="/Package/Capabilities">
+            <Capability Name="picturesLibrary" />
+            <DeviceCapability Name="webcam" />
+        </config-file>
+        <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
+            <clobbers target="CameraPopoverHandle" />
+        </js-module>
+        <js-module src="src/windows8/CameraProxy.js" name="CameraProxy">
+            <merges target="" />
+        </js-module>
+
+    </platform>
           
 </plugin>
