@@ -1,5 +1,7 @@
 Fork Note:  This is a shameful rip of the below mentioned repository.  Minor modifications have been made but the credit belongs to github member "shaithana".  Original:  shaithana/cordova-plugin-wezka-nativecamera
 
+Added the files iOS and Windows8 camera files from com.logilite.vision.camera to make an inclusive package.
+
 com.wezka.nativecamera
 ==========================
 
