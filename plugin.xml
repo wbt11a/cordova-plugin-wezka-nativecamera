@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="org.wbt11a.nativecamera"
         version="0.1.0">
     <name>Native Camera</name>
+    <description>Android Native Camera with Flash, Rear Facing Camera, Autozoom</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,camera,flash</keywords>
+    <repo>https://github.com/wbt11a/cordova-plugin-wezka-nativecamera.git</repo>
+    <issue> </issue>
 
+    
     <js-module src="www/CameraConstants.js" name="Camera">
         <clobbers target="Camera" />
     </js-module>
