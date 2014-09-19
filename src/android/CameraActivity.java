@@ -1,17 +1,17 @@
 /*
-	    Copyright 2014 Giovanni Di Gregorio.
+        Copyright 2014 Giovanni Di Gregorio.
 
-		Licensed under the Apache License, Version 2.0 (the "License");
-		you may not use this file except in compliance with the License.
-		You may obtain a copy of the License at
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
 
-		http://www.apache.org/licenses/LICENSE-2.0
+        http://www.apache.org/licenses/LICENSE-2.0
 
-		Unless required by applicable law or agreed to in writing, software
-		distributed under the License is distributed on an "AS IS" BASIS,
-		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		See the License for the specific language governing permissions and
-   		limitations under the License.   			
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.              
  */
 
 package org.wbt11a.nativecamera;
@@ -67,8 +67,8 @@ public class CameraActivity extends Activity implements SensorEventListener {
     private int cam = 0;
     private boolean pressed = false;
     private int degrees = 0;
-    private boolean isFlash = false;
-    private boolean isFrontCamera = false;
+    private Boolean isFlash = false;
+    private Boolean isFrontCamera = false;
     SensorManager sm;
     WindowManager mWindowManager;
 
@@ -100,6 +100,9 @@ public class CameraActivity extends Activity implements SensorEventListener {
         final int imgFlashAuto = getResources().getIdentifier("@drawable/btn_flash_auto", null, getPackageName());
         final int imgFlashOn = getResources().getIdentifier("@drawable/btn_flash_on", null, getPackageName());
         viewfinderHalfPx = pxFromDp(72)/2;
+        previewHolder = preview.getHolder();
+        previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        previewHolder.addCallback(surfaceCallback);
 
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sm.getSensorList(Sensor.TYPE_ACCELEROMETER).size()!=0){
@@ -145,6 +148,9 @@ public class CameraActivity extends Activity implements SensorEventListener {
                 } else {
                     focusRect = new Rect(-100, -100, 100, 100);
                 }
+
+                if (camera == null)
+                    return true;
 
                 Parameters parameters = camera.getParameters();
 
@@ -321,9 +327,6 @@ public class CameraActivity extends Activity implements SensorEventListener {
     @Override
     public void onResume() {
         super.onResume();
-        previewHolder = preview.getHolder();
-        previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        previewHolder.addCallback(surfaceCallback);
         if (Camera.getNumberOfCameras() >= 1) {
             camera = Camera.open(cam);
         }
@@ -407,16 +410,23 @@ public class CameraActivity extends Activity implements SensorEventListener {
                     parameters.setPictureSize(pictureSize.width, pictureSize.height);
 
                     parameters.setPictureFormat(ImageFormat.JPEG);
-                    if (parameters.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-                        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-                    } else if (parameters.getSupportedFocusModes().contains(android.hardware.Camera.Parameters.FOCUS_MODE_AUTO)) {
-                        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                    // For Android 2.3.4 quirk
+                    if (parameters.getSupportedFocusModes() != null) {
+                        if (parameters.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                        } else if (parameters.getSupportedFocusModes().contains(android.hardware.Camera.Parameters.FOCUS_MODE_AUTO)) {
+                            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                        }
                     }
-                    if (parameters.getSupportedSceneModes().contains(Camera.Parameters.SCENE_MODE_AUTO)) {
-                        parameters.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+                    if (parameters.getSupportedSceneModes() != null) {
+                        if (parameters.getSupportedSceneModes().contains(Camera.Parameters.SCENE_MODE_AUTO)) {
+                            parameters.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+                        }
                     }
-                    if (parameters.getSupportedWhiteBalance().contains(Camera.Parameters.WHITE_BALANCE_AUTO)) {
-                        parameters.setSceneMode(Camera.Parameters.WHITE_BALANCE_AUTO);
+                    if (parameters.getSupportedWhiteBalance() != null) {
+                        if (parameters.getSupportedWhiteBalance().contains(Camera.Parameters.WHITE_BALANCE_AUTO)) {
+                            parameters.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
+                        }
                     }
                     cameraConfigured=true;
                     camera.setParameters(parameters);
@@ -548,7 +558,6 @@ public class CameraActivity extends Activity implements SensorEventListener {
     }
 
 }
-
 
 
 
