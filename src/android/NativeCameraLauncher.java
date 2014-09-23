@@ -14,8 +14,8 @@
    		limitations under the License.   			
  */
 
-//package org.wbt11a.nativecamera;
-package com.wezka.nativecamera;
+package org.wbt11a.nativecamera;
+//package com.wezka.nativecamera;
 
 import java.io.File;
 import java.io.FileNotFoundException;
