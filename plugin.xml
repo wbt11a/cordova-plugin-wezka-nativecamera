@@ -3,7 +3,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="org.wbt11a.nativecamera"
-    version="0.1.2">
+    version="0.1.3">
     
     <name>Native Camera</name>
     
@@ -11,7 +11,7 @@
         <engine name="cordova" version=">=3.0.0" />
     </engines>
     
-    <description>Android Native Camera with Flash, Rear Facing Camera, Autozoom</description>
+    <description>Android Native Camera with Flash, Rear Facing Camera, Autozoom.  iOS Camera mirror of Apache Camera (cordova-plugin-camera)</description>
     
     <author>wezka-nativecamera</author>
     
