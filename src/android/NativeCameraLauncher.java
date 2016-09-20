@@ -71,6 +71,7 @@ public class NativeCameraLauncher extends CordovaPlugin {
 	private int targetHeight;
 	private Uri imageUri;
 	private File photo;
+	private int cameraDirection;
 	private static final String _DATA = "_data";
 	private CallbackContext callbackContext;
 	private String date = null;
@@ -95,6 +96,7 @@ public class NativeCameraLauncher extends CordovaPlugin {
 				this.targetHeight = args.getInt(4);
 				this.targetWidth = args.getInt(3);
 				this.mQuality = args.getInt(0);
+				this.cameraDirection = args.getInt(11);
 				this.takePicture();
 				PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
 				r.setKeepCallback(true);
@@ -115,6 +117,7 @@ public class NativeCameraLauncher extends CordovaPlugin {
 		this.photo = createCaptureFile();
 		this.imageUri = Uri.fromFile(photo);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, this.imageUri);
+		intent.putExtra("cameraDirectionParam", cameraDirection);
 		this.cordova.startActivityForResult((CordovaPlugin) this, intent, 1);
 	}
 
