@@ -185,7 +185,10 @@ public class CameraActivity extends Activity implements SensorEventListener {
             }
         });
 
-
+        Integer camValue = (Integer) getIntent().getExtras().get("cameraDirectionParam");
+        if (camValue != null) {
+          cam = Integer.parseInt(camValue.toString());
+        }
         if(isFrontCamera) {
             flipCamera.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
