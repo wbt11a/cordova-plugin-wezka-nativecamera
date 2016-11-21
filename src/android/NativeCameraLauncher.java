@@ -26,7 +26,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 
-import org.apache.cordova.ExifHelper;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -120,8 +119,8 @@ public class NativeCameraLauncher extends CordovaPlugin {
 
 	private File createCaptureFile() {
 		File oldFile = new File(getTempDirectoryPath(this.cordova.getActivity().getApplicationContext()), "Pic-" + this.date + ".jpg");
-		if(oldFile.exists())
-			oldFile.delete();
+		// if(oldFile.exists())
+		// 	oldFile.delete();
 		Calendar c = Calendar.getInstance();
 	    this.date = "" + c.get(Calendar.DAY_OF_MONTH)
 					+ c.get(Calendar.MONTH)
