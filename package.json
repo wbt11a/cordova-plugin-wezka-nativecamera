@@ -7,7 +7,7 @@
     "id": "org.wbt11a.nativecamera",
     "platforms": [
       "android",
-      "ios",
+      "ios"
     ]
   },
   "repository": {
@@ -22,7 +22,7 @@
     "camera",
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios",
+    "cordova-ios"
 
   ],
   "scripts": {
