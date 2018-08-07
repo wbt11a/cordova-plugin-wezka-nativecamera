@@ -38,19 +38,19 @@
 
     <!-- android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="app/src/main/res/xml/config.xml" parent="/*">
             <feature name="Camera">
                 <param name="android-package" value="org.wbt11a.nativecamera.NativeCameraLauncher"/>
             </feature>
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/*">
+        <config-file target="app/src/main/AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.CAMERA" />
             <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
             <activity 
                 android:label="nativecameraplugin" 
                 android:name="org.wbt11a.nativecamera.CameraActivity" 
@@ -63,12 +63,12 @@
         <source-file src="src/android/NativeCameraLauncher.java" target-dir="src/org/wbt11a/nativecameraplugin" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/wbt11a/nativecameraplugin" />
         <source-file src="src/android/nativecameraplugin.xml" target-dir="res/layout" />
-        <source-file src="res/btn_shot.png" target-dir="res/drawable" />
-        <source-file src="res/btn_flip.png" target-dir="res/drawable" />
-        <source-file src="res/btn_flash_on.png" target-dir="res/drawable" />
-        <source-file src="res/btn_flash_no.png" target-dir="res/drawable" />
-        <source-file src="res/btn_flash_auto.png" target-dir="res/drawable" />
-        <source-file src="res/viewfinder.png" target-dir="res/drawable" />
+        <source-file src="res/btn_shot.png" target-dir="app/src/main/res/drawable" />
+        <source-file src="res/btn_flip.png" target-dir="app/src/main/res/drawable" />
+        <source-file src="res/btn_flash_on.png" target-dir="app/src/main/res/drawable" />
+        <source-file src="res/btn_flash_no.png" target-dir="app/src/main/res/drawable" />
+        <source-file src="res/btn_flash_auto.png" target-dir="app/src/main/res/drawable" />
+        <source-file src="res/viewfinder.png" target-dir="app/src/main/res/drawable" />
 
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
