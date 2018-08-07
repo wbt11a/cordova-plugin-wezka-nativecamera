@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-wezka-nativecamera",
+  "name": "org.wbt11a.nativecamera",
   "version": "0.9.0-beta.3",
   "description": "Schedules and queries for local notifications",
   "cordova": {
-    "id": "cordova-plugin-wezka-nativecamera",
+    "id": "org.wbt11a.nativecamera",
     "platforms": [
       "android",
       "ios",
